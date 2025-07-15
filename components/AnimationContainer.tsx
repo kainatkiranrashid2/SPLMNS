@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import AnimatedTag from "./AnimatedTag";
 import { AnimationItem, addAnimation } from "@/utils/animationManager";
+import gsap from "gsap";
 
 interface AnimationContainerProps {
   initialText: string;
@@ -15,18 +16,47 @@ export default function AnimationContainer({
   const containerRef = useRef<HTMLDivElement>(null);
   const [animations, setAnimations] = useState<AnimationItem[]>([]);
   const [newText, setNewText] = useState("");
-  const initialAnimationAdded = useRef(false);
+  const [masterTimeline, setMasterTimeline] =
+    useState<gsap.core.Timeline | null>(null);
+  const [cycleKey, setCycleKey] = useState(0);
 
+  // Add initial animation
   useEffect(() => {
     if (initialText) {
       const newAnim = addAnimation(initialText);
       setAnimations((prev) => [...prev, newAnim]);
-      initialAnimationAdded.current = true;
     }
   }, [initialText]);
 
+  // Create and manage master timeline
+  useEffect(() => {
+    if (animations.length > 0) {
+      // Kill existing timeline
+      if (masterTimeline) {
+        masterTimeline.kill();
+      }
+      const newMasterTimeline = gsap.timeline({
+        repeat: -1,
+        onRepeat: () => {
+          setCycleKey((prev) => prev + 1);
+        },
+      });
+
+      setMasterTimeline(newMasterTimeline);
+
+      return () => {
+        newMasterTimeline.kill();
+      };
+    }
+  }, [animations.length, cycleKey]);
+
   const handleReset = () => {
+    if (masterTimeline) {
+      masterTimeline.kill();
+    }
     setAnimations([]);
+    setMasterTimeline(null);
+    setCycleKey(0);
     onReset();
   };
 
@@ -46,9 +76,10 @@ export default function AnimationContainer({
         className="aspect-video w-full bg-gray-100 rounded-xl overflow-hidden relative border-2 border-gray-300">
         {animations.map((anim) => (
           <AnimatedTag
-            key={anim.id}
+            key={`${anim.id}-${cycleKey}`}
             animation={anim}
             containerRef={containerRef}
+            masterTimeline={masterTimeline}
           />
         ))}
       </div>
@@ -62,7 +93,7 @@ export default function AnimationContainer({
             value={newText}
             onChange={(e) => setNewText(e.target.value)}
             placeholder="Enter new text"
-            className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200"
             maxLength={50}
             disabled={animations.length >= 5}
           />
