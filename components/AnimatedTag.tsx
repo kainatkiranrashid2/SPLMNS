@@ -67,7 +67,7 @@ export default function AnimatedTag({
   return (
     <div
       ref={tagRef}
-      className="absolute bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full shadow-lg font-medium whitespace-nowrap">
+      className="absolute bg-green-600 text-white px-4 py-2 rounded-full shadow-lg font-medium whitespace-nowrap">
       {animation.text}
     </div>
   );
