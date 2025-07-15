@@ -6,25 +6,20 @@ import type { AnimationItem } from "@/utils/animationManager";
 export default function AnimatedTag({
   animation,
   containerRef,
+  masterTimeline,
 }: {
   animation: AnimationItem;
   containerRef: RefObject<HTMLElement | null>;
+  masterTimeline: gsap.core.Timeline | null;
 }) {
   const tagRef = useRef<HTMLDivElement>(null);
-  const animationInstance = useRef<gsap.core.Timeline | null>(null);
 
   useLayoutEffect(() => {
-    if (!tagRef.current || !containerRef.current) return;
+    if (!tagRef.current || !containerRef.current || !masterTimeline) return;
 
     const container = containerRef.current;
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
-
-    // Kill any existing animation
-    animationInstance.current?.kill();
-
-    // Create new looping animation timeline
-    animationInstance.current = gsap.timeline({ repeat: -1 });
 
     // Function to create a single animation cycle
     const createAnimationCycle = () => {
@@ -60,18 +55,14 @@ export default function AnimatedTag({
             ease: "sine.inOut",
           },
           0
-        ); // Start at the same time as the previous animation
+        );
 
       return cycle;
     };
 
-    // Add the animation cycle to the main timeline
-    animationInstance.current.add(createAnimationCycle());
-
-    return () => {
-      animationInstance.current?.kill();
-    };
-  }, [animation, containerRef]);
+    // Add this animation to the master timeline
+    masterTimeline.add(createAnimationCycle(), 0); // Start all at the same time
+  }, [animation, containerRef, masterTimeline]);
 
   return (
     <div
