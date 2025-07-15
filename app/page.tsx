@@ -65,11 +65,11 @@ export default function Home() {
             <div className="text-center mb-8">
               <button
                 onClick={() => setShowAnimation(false)}
-                className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors duration-200 mb-4">
-                <RotateCcw className="w-4 h-4" />
-                <span>Back to input</span>
+                className="inline-flex items-center gap-2 text-green-600 hover:text-gray-800 transition-colors  duration-200 mb-4">
+                <RotateCcw className="w-6 h-6" />
+                <span className="text-lg font-semibold">Back to input</span>
               </button>
-              <h2 className="text-2xl font-bold text-gray-800">
+              <h2 className="text-2xl font-bold text-green-600">
                 Watch your text come alive
               </h2>
             </div>
