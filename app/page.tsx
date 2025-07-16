@@ -79,17 +79,17 @@ export default function Home() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
         {!showAnimation ? (
           <div className="max-w-2xl mx-auto">
-            {/* Enhanced Header Section */}
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-lg mb-6">
-                <Sparkles className="w-10 h-10 text-white" />
+            <div className="text-center mb-4">
+              <div className="flex justify-center items-center gap-4 mb-4">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-lg ">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <h1 className="text-3xl font-bold text-gray-900">
+                  Text Animation Studio
+                </h1>
               </div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-3">
-                Text Animation Studio
-              </h1>
-              <p className="text-xl text-gray-600 max-w-lg mx-auto leading-relaxed">
-                Transform your text into stunning animated experiences with
-                professional-grade effects and smooth transitions
+              <p className="text-lg text-gray-600 max-w-lg mx-auto leading-relaxed">
+                Transform your text into stunning animated experiences
               </p>
             </div>
 
@@ -124,7 +124,7 @@ export default function Home() {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label
                   htmlFor="text-input"
@@ -164,20 +164,6 @@ export default function Home() {
                     <span className="text-sm font-medium">{form.error}</span>
                   </div>
                 )}
-
-                {/* Enhanced Help Text */}
-                {!form.error && (
-                  <div
-                    id="input-help"
-                    className="mt-3 p-3 bg-gray-50 rounded-lg">
-                    <p className="text-sm text-gray-600">
-                      <span className="font-medium">💡 Pro tip:</span> Keep it
-                      short and punchy for the best visual impact. Perfect for
-                      headlines, announcements, product launches, or any text
-                      that needs to grab attention.
-                    </p>
-                  </div>
-                )}
               </div>
 
               {/* Submit Button */}
@@ -195,8 +181,7 @@ export default function Home() {
               </button>
             </form>
 
-            {/* Quick Examples */}
-            <div className="mt-8 p-4 bg-white/40 rounded-xl border border-gray-200/50">
+            <div className="mt-4 p-4 bg-white/40 rounded-xl border border-gray-200/50">
               <h4 className="text-sm font-medium text-gray-700 mb-3">
                 Popular examples to try:
               </h4>
@@ -232,7 +217,7 @@ export default function Home() {
             </div>
 
             {/* Animation Container */}
-            <div className="bg-white/60 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200/50 overflow-hidden">
+            <div className="bg-white/60 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200/50">
               <AnimationContainer
                 initialText={form.value}
                 onReset={handleReset}
