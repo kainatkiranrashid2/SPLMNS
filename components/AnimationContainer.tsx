@@ -123,7 +123,7 @@ export default function AnimationContainer({
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full  mx-auto">
       {/* Toast Notification */}
       {toast && (
         <div
@@ -159,17 +159,15 @@ export default function AnimationContainer({
 
             {/* Floating Action Buttons */}
             <div className="absolute top-4 right-4 flex gap-2">
-              {animations.length > 0 && (
-                <button
-                  onClick={handleReset}
-                  className="w-10 h-10 bg-gray-600 hover:bg-gray-700 text-white rounded-full transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl z-10 group"
-                  title="Reset all animations">
-                  <RotateCcw
-                    size={16}
-                    className="group-hover:rotate-180 transition-transform duration-300"
-                  />
-                </button>
-              )}
+              <button
+                onClick={handleReset}
+                className="w-10 h-10 bg-gray-600 hover:bg-gray-700 text-white rounded-full transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl z-10 group"
+                title="Reset all animations">
+                <RotateCcw
+                  size={16}
+                  className="group-hover:rotate-180 transition-transform duration-300"
+                />
+              </button>
 
               <button
                 onClick={() => setShowAddModal(true)}
