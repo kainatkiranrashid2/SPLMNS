@@ -76,7 +76,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-14">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
         {!showAnimation ? (
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-4">
