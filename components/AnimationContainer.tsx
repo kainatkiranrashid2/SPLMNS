@@ -159,7 +159,7 @@ export default function AnimationContainer({
                 title="Reset all animations">
                 <Undo2
                   size={16}
-                  className="group-hover:rotate-180 transition-transform duration-300"
+                  className="transition-transform duration-300"
                 />
               </button>
 
