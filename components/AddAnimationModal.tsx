@@ -70,7 +70,7 @@ export default function AddAnimationModal({
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+      className="fixed inset-0 bg-gray-200 w-full h-full bg-opacity-10 flex items-center justify-center z-50 p-4"
       onClick={handleBackdropClick}>
       <div className="bg-white rounded-lg w-full max-w-md mx-auto shadow-2xl transform transition-all animate-in fade-in-0 zoom-in-95 duration-200">
         {/* Modal Header */}
