@@ -226,7 +226,7 @@ export default function Home() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full ">
                 <Sparkles className="w-5 h-5 text-green-600" />
               </div>
-              <h2 className="text-2xl font-bold text-green-600 mb-2">
+              <h2 className="text-2xl font-bold text-green-600 ">
                 Your Animation is Ready!
               </h2>
             </div>
