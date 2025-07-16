@@ -4,13 +4,7 @@ import AnimatedTag from "./AnimatedTag";
 import AddAnimationModal from "./AddAnimationModal";
 import { AnimationItem, addAnimation } from "@/utils/animationManager";
 import gsap from "gsap";
-import {
-  Plus,
-  RotateCcw,
-  Trash2,
-  CheckCircle,
-  AlertCircle,
-} from "lucide-react";
+import { Plus, Trash2, CheckCircle, AlertCircle, Undo2 } from "lucide-react";
 
 interface AnimationContainerProps {
   initialText: string;
@@ -163,7 +157,7 @@ export default function AnimationContainer({
                 onClick={handleReset}
                 className="w-10 h-10 bg-gray-600 hover:bg-gray-700 text-white rounded-full transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl z-10 group"
                 title="Reset all animations">
-                <RotateCcw
+                <Undo2
                   size={16}
                   className="group-hover:rotate-180 transition-transform duration-300"
                 />
