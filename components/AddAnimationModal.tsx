@@ -102,7 +102,7 @@ export default function AddAnimationModal({
                   value={text}
                   onChange={(e) => setText(e.target.value)}
                   placeholder="Enter text to animate..."
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all"
+                  className="w-full pl-4 pr-12 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all"
                   maxLength={50}
                   autoFocus
                 />
